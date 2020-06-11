@@ -1,0 +1,89 @@
+.admin-add{
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    .title{
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+
+
+        label{
+           font-size: 1.2rem;
+           font-weight: 600;
+        }
+        input{
+            flex: 1;
+            border: 1px solid #000;
+            padding-left: 10px;
+            outline: none;
+            border-radius: 8px;
+            margin-left: 10px;
+
+            &:focus{
+                border-color: lightseagreen;
+                border-width: 2px;
+            }
+        }
+        
+    }
+
+    .topic{
+        display: flex;
+        margin-bottom: 10px;
+
+        label{
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        select{
+            margin-left: 10px;
+            border-radius: 10px;
+            outline: none;
+
+            option{
+                border-radius: 10px;
+                cursor: pointer;
+            }
+
+            &:focus{
+                border-color: lightseagreen;
+                border-width: 2px;
+            }
+        }
+    }
+
+    .tag{
+        display: flex;
+        width: 100%;
+        align-items: center;
+        margin-bottom: 10px;
+
+        label{
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-right: 10px;
+        }
+    }
+
+    .md{
+        width: 100%;
+        height: 60vh;
+        margin-bottom: 20px;
+    }
+    .btn{
+        align-self: flex-end;
+        background-color: lightskyblue;
+        width: 100px;
+        outline: none;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 5px 20px;
+        font-size: 1rem;
+        color: #fff;
+    }
+}

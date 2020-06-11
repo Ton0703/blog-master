@@ -1,0 +1,241 @@
+@import "~antd/dist/antd.css";
+@import "./style/markdown.scss";
+@import "./style/atom-one-light.css";
+
+$dark1: #2e3440;
+$dark2: #3b4252;
+$dark3: #434c5e;
+$dark4: #4c566a;
+
+$light1: #d8dee9;
+$light2: #e5e9f0;
+$light3: #eceff4;
+
+$frost1: #88c0d0;
+$frost2: #81a1c1;
+$frost3: #5e81ac;
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  min-height: 100vh;
+}
+body.light-mode {
+  background-color: #fff;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+body.light-mode .button {
+  background-color: #e7e7e7;
+}
+
+body.dark-mode {
+  background-color: #10171d;
+  color: #f5f6f7;
+
+  .dark-mode-toggle > button {
+    color: #999;
+    &:last-child {
+      color: lightblue;
+    }
+  }
+  #root {
+    .App {
+      .header {
+        background-color: #1e2125;
+
+        .menu-container {
+          background-color: #1e2125;
+
+          @media screen and (max-width: 1000px) {
+            background-color: $dark1;
+          }
+
+          .search {
+            .search-btn {
+              svg {
+                path {
+                  fill: #dfdfdf;
+                }
+              }
+            }
+          }
+        }
+
+        .header-button {
+          .line {
+            background-color: #f5f6f7;
+          }
+        }
+      }
+      .home {
+        .article-list {
+          background-color: #10171d;
+          .preview {
+            border-color: rgba(91, 130, 200, .37);
+            &:hover {
+              border-color: #fff;
+            }
+
+            .ant-divider {
+              color: #f5f6f7;
+              &::before,
+              &::after {
+                border-color: rgba(91, 130, 200, .37);
+              }
+
+            }
+            .content {
+              background-color: $dark1;
+              background-color: #10171d;
+              
+              h1, h2, h3, h4, h5,h6, p{
+                color: #f5f6f7;
+              }
+            }
+          }
+          .tr{
+            .recommend{
+              border-color: rgba(91, 130, 200, .37) ;
+              div{
+                color: #f5f6f7;
+                &::before,&::after{
+                  border-color: rgba(91, 130, 200, .37);
+                }
+
+                div{
+                  a{
+                    color: #f5f6f7;
+                  }
+                }
+              }
+            }
+          }
+        }
+        .article{
+          background-color: #10171d;
+          .content {
+            border-color: rgba(91, 130, 200, .37);
+            .article-detail {
+              h1,
+              h2,
+              h3,
+              h4,
+              h5 {
+                color: #f5f6f7;
+  
+                border-color: $dark3;
+              }
+              p {
+                img {
+                  border: none;
+                }
+              }
+              table{
+                tr{
+                  background: none;
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .sider {
+        background-color: #10171d;  
+        border-color: rgba(91, 130, 200, .37);
+      }
+    }
+  }
+}
+.dark-mode-toggle {
+  display: flex;
+  margin: 0 auto;
+  & > button {
+    font-size: 1.2em;
+    background: none;
+    border: none;
+    color: #ffe600;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    &:last-child {
+      color: #666;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.toggle-control {
+  position: relative;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+
+input[type="checkbox"].dmcheck {
+  width: 40px;
+  height: 20px;
+  background: #555;
+  position: relative;
+  border-radius: 10px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  vertical-align: 2px;
+  outline: none;
+
+  &:checked + label {
+    left: 30px;
+  }
+
+  &:focus-visible {
+    outline: solid 2px white;
+  }
+
+  & + label {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: absolute;
+    left: 10px;
+    background: #fff;
+    opacity: 0.9;
+    background-color: #f6f6f6;
+  }
+}
+
+.App {
+  .home {
+    width: 100%;
+    padding-left: 300px;
+    padding-top: 60px;
+
+    @media screen and (max-width: 1000px) {
+      padding-left: 200px;
+    }
+    @media screen and (max-width: 700px) {
+      padding-left: 150px;
+    }
+    @media screen and (max-width: 590px) {
+      padding-left: 0px;
+    }
+  }
+
+  .admin{
+      width: 100%;
+      padding-top: 60px;
+      padding-left: 200px;  
+  }
+}
