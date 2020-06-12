@@ -4,6 +4,8 @@ import MDEditor from "../../../utils/markdown";
 import EditableTagGroup from "../../../components/Admin/Tag";
 import axios from "../../../utils/axios";
 
+import Test from '../../../components/Admin/Tag/index.test'
+
 function Edit(props) {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState("");
@@ -18,7 +20,7 @@ function Edit(props) {
       })
   }, [props.match.params.id])
   const handleClick = () => {
-    axios.patch("/article", { title, content, topic, tags }).then((res) => {
+    axios.patch(`/article/${props.match.params.id}`, { title, content, topic, tags }).then((res) => {
       console.log("修改成功");
     });
   };
@@ -56,7 +58,8 @@ function Edit(props) {
       </div>
       <div className="tag">
         <label htmlFor="tag">标签:</label>
-        <EditableTagGroup setTag={setTag} tag={[...tags]}/>
+        {/* <EditableTagGroup setTag={setTag} tag={[...tags]}/> */}
+        <Test set={setTag} tags={tags} />
       </div>
       <div className="md">
         <MDEditor value={content} onChange={setContent} />
