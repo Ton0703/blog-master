@@ -1,29 +1,12 @@
 import React from 'react'
-import marked from 'marked'
-import xss from 'xss'
-import hljs from 'highlight.js';
+import {translateMarkdown} from './index'
 import SimpleMDE from 'react-simplemde-editor'
 import 'easymde/dist/easymde.min.css'
 import './index.scss'
 
-const translateMarkdown = (plainText, isGuardXss = false) => {
-    return marked(isGuardXss ? xss(plainText) : plainText, {
-      renderer: new marked.Renderer(),
-      gfm: true,
-      pedantic: false,
-      sanitize: false,
-      tables: true,
-      breaks: true,
-      smartLists: true,
-      smartypants: true,
-      highlight: function(code) {
-        /*eslint no-undef: "off"*/
-        return hljs.highlightAuto(code).value
-      }
-    })
-  }
 
-  function MdEditor(props) {
+
+export default function MdEditor(props) {
     return (
         <SimpleMDE
            className='MD'
@@ -54,4 +37,3 @@ const translateMarkdown = (plainText, isGuardXss = false) => {
         </SimpleMDE>
     )
 }
-export default MdEditor

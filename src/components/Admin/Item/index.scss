@@ -6,19 +6,37 @@
     border-radius: 10px;
     padding: 10px;
 
+    div{
+        overflow: hidden;
+    }
+
     .item-title{
-        width: 30%;
+        width: 40%;
         font-weight: 600;
         cursor: pointer;
+        overflow: hidden;
+        
+        span{
+            width: 100%;
+            display: block;
+            overflow: hidden;
+        }
     }
     .item-time{
-        width: 30%;
+        width: 45%;
         font-weight: 600;
+        overflow: hidden;
+        div{
+            display: flex;
+            min-width: 140px;
+        }
     }
 
     .item-btn{
         display: flex;
+        flex: 1;
         align-items: center;
+        min-width: 70px;
 
         div{
             height: 20px;

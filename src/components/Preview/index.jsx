@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Divider } from "antd";
 import TopicIcon from "../../img/topic";
 import TagIcon from "../../img/tag";
-import translate from '../../utils/markdown'
+import { translateMarkdown } from "../../utils";
 import "./index.scss";
 
 const timeFormat = (time) => {
@@ -13,25 +13,31 @@ const timeFormat = (time) => {
 
 function Preview({ data }) {
   const history = useHistory();
-  const {_id, title, content, updatedAt, topic, tags } = data;
+  const { _id, title, content, updatedAt, topic, tags } = data;
   function Tag({ tag }) {
     return <span onClick={() => history.push(`/tag/${tag}`)}>{tag}</span>;
   }
   function Topic({ topic }) {
     return <span onClick={() => history.push(`/topic/${topic}`)}>{topic}</span>;
   }
-  function jumpUrl(){
-      history.push(`/article/${_id}`)
+  function jumpUrl() {
+    history.push(`/article/${_id}`);
   }
   return (
     <div className="preview">
       <Divider orientation="left">
         <div className="info">
-          <div className="title" onClick={() => jumpUrl()}>{title}</div>
+          <div className="title" onClick={() => jumpUrl()}>
+            {title}
+          </div>
           <div className="time">{timeFormat(updatedAt)}</div>
         </div>
       </Divider>
-      <div className="content"  onClick={() => jumpUrl()} dangerouslySetInnerHTML={{ __html: translate(content) }} />
+      <div
+        className="content"
+        onClick={() => jumpUrl()}
+        dangerouslySetInnerHTML={{ __html: translateMarkdown(content) }}
+      />
       <div className="classify">
         <div className="topic">
           <TopicIcon />
@@ -40,7 +46,7 @@ function Preview({ data }) {
         <div className="tag">
           <TagIcon />
           {tags.map((tag) => (
-            <Tag tag={tag} key={tag}/>
+            <Tag tag={tag} key={tag} />
           ))}
         </div>
       </div>

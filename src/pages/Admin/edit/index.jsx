@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./index.scss";
 import MDEditor from "../../../utils/markdown";
-import EditableTagGroup from "../../../components/Admin/Tag";
 import axios from "../../../utils/axios";
 
 import Test from '../../../components/Admin/Tag/index.test'
@@ -20,7 +19,7 @@ function Edit(props) {
       })
   }, [props.match.params.id])
   const handleClick = () => {
-    axios.patch(`/article/${props.match.params.id}`, { title, content, topic, tags }).then((res) => {
+    axios.put(`/article/${props.match.params.id}`, { title, content, topic, tags }).then((res) => {
       console.log("修改成功");
     });
   };

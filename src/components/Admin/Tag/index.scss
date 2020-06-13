@@ -1,8 +1,11 @@
 .tag-wrapper {
   display: flex;
+  flex-wrap: wrap;
 
   .tags {
     display: flex;
+    flex-wrap: wrap;
+   
     .tag-item {
       border: 1px solid #e7e7e7;
       border-radius: 5px;
@@ -10,6 +13,10 @@
       margin-right: 10px;
       display: flex;
       align-items: center;
+      
+      @media screen and(max-width: 500px) {
+        margin-bottom: 5px;
+      }
 
       div{
           display: flex;
@@ -22,7 +29,9 @@
   }
 
   .add {
+    max-width: 100px;
     input {
+      width: 100%;
       outline: none;
       border: 1px solid #e7e7e7;
       border-radius: 5px;

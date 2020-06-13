@@ -3,10 +3,22 @@
   left: 0;
   bottom: 0;
   width: 200px;
-  height: calc(100vh - 60px);
+  height: calc(100vh - 59px);
   background-color: lightcoral;
   display: flex;
   flex-direction: column;
+  transform: translateX(-100%);
+  transition: all .3s ease;
+
+  @media screen and (max-width: 1000px) {
+    width: 150px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 100px;
+  }
+  @media screen and (max-width: 500px) {
+    width: 50px;
+  }
 
   .menu {
     width: 100%;
@@ -36,4 +48,8 @@
       }
     }
   }
+}
+
+.visible{
+  transform: translateX(0);
 }
