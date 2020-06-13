@@ -9,6 +9,7 @@ import "./index.scss";
 function Header() {
   const ref = useRef(null);
   const history = useHistory();
+  const location = useLocation()
   const [visible, set] = useState(false);
   const [search, setSearch] = useState(false);
   const [key, setKey] = useState("");
@@ -27,11 +28,12 @@ function Header() {
   };
 
   const fetchData = useCallback(() => {
-    history.push(key !== "" && `?key=${key}`);
+    const url = location.search ==='' ? `?key=${key}` : (location.search.includes('key')? `${location.search.substr(0, location.search.indexOf('key'))}key=${key}` : `${location.search}&key=${key}`)
+    history.push(key !== "" && url);
     setKey("");
     setSearch(false);
     set(false)
-  }, [key]);
+  }, [key, history, location.search]);
 
   const handleButtonClick = (e) => {
     e.preventDefault();
@@ -47,6 +49,10 @@ function Header() {
       fetchData();
     }
   };
+
+  const handleAdminClick = () => {
+    history.push('/admin')
+  }
 
   return (
     <div className="header">
@@ -76,7 +82,7 @@ function Header() {
         </div>
         <div className="link-menu">
           <ul>
-            <li className="menu-item">Docs</li>
+            <li className="menu-item" onClick={handleAdminClick}>Admin</li>
             <li className="menu-item">Login</li>
             <li className="menu-item">Github</li>
           </ul>

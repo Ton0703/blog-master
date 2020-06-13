@@ -15,10 +15,10 @@ function Preview({ data }) {
   const history = useHistory();
   const { _id, title, content, updatedAt, topic, tags } = data;
   function Tag({ tag }) {
-    return <span onClick={() => history.push(`/tag/${tag}`)}>{tag}</span>;
+    return <span onClick={() => history.push(`?tag=${tag}`)}>{tag}</span>;
   }
   function Topic({ topic }) {
-    return <span onClick={() => history.push(`/topic/${topic}`)}>{topic}</span>;
+    return <span onClick={() => history.push(`?topic/${topic}`)}>{topic}</span>;
   }
   function jumpUrl() {
     history.push(`/article/${_id}`);

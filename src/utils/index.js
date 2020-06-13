@@ -18,3 +18,12 @@ export const translateMarkdown = (plainText, isGuardXss = false) => {
       }
     })
   }
+
+  export const decodeQuery = url => {
+    const params = {}
+    url.substr(1).split('&').forEach(v => {
+      const d = v.split('=')
+      if (d[1] && d[0]) params[d[0]] = d[1]
+    })
+    return params
+  }

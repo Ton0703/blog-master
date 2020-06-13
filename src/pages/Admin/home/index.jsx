@@ -3,12 +3,21 @@ import axios from "../../../utils/axios";
 import "./index.scss";
 import Item from "../../../components/Admin/Item";
 import { ToastContainer, toast } from "react-toastify";
+import { Pagination } from 'antd'
+import { useLocation, useHistory } from 'react-router-dom'
 import "react-toastify/dist/ReactToastify.css";
 
 function Home() {
   const [list, set] = useState([]);
   const [model, setModel] = useState(false);
   const [id, setId] = useState("");
+  const [count, setCount] = useState(1)
+
+  const location = useLocation()
+  const history = useHistory()
+
+  const current = location.pathname.includes('/page') ? location.pathname.substr(12) : '1'
+ 
 
   const itemSwitch = () => {
     setModel(true);
@@ -32,12 +41,16 @@ function Home() {
     callback();
     setModel(false);
   };
-
+  const handlePageChange = (e) => {
+    history.push(`/admin/page=${e}`)
+  }
+  
   useEffect(() => {
-    axios.get("/article/admin").then((res) => {
-      set(res.data);
-    });
-  }, []);
+    axios.get(`/article/admin?page=${current}`).then((res) => {
+      set(res.data.data);
+      setCount(res.data.count)
+    }); 
+  }, [current]);
   return (
     <div className="admin-home">
       <ToastContainer autoClose={3000}/>
@@ -59,6 +72,7 @@ function Home() {
             time={item.createdAt}
           />
         ))}
+        <Pagination onChange={handlePageChange} current={parseInt(current)} total={count} pageSize={15} style={{textAlign: 'center', marginTop: '10px'}}/>
       </div>
       <div className={`model ${model ? "active" : ""}`}>
         <div className="model-title">确认删除？</div>

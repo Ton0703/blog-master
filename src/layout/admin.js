@@ -14,9 +14,9 @@ function Admin() {
             <Sider visible={sliderVisible}/>
             <div className={`admin ${sliderVisible ? '' : 'visible'}`}>
                 <Switch>
-                    <Route path='/admin' component={Home} exact/>
                     <Route path='/admin/add' component={Add} exact />
                     <Route path='/admin/edit/:id' component={Edit} />
+                    <Route path='/admin' component={Home} />
                 </Switch>
             </div>
         </div>
