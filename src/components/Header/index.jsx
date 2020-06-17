@@ -28,7 +28,7 @@ function Header() {
   };
 
   const fetchData = useCallback(() => {
-    const url = location.search ==='' ? `?key=${key}` : (location.search.includes('key')? `${location.search.substr(0, location.search.indexOf('key'))}key=${key}` : `${location.search}&key=${key}`)
+    const url = location.search ==='' ? `?key=${key}` : (location.search.includes('key') ? `${location.search.substr(0, location.search.indexOf('key'))}key=${key}` : `${location.search}&key=${key}`)
     history.push(key !== "" && url);
     setKey("");
     setSearch(false);

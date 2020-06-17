@@ -25,6 +25,7 @@ function Edit(props) {
   };
   const handleSelectChange = (e) => {
     setTopic(e);
+    console.log(e)
   };
 
   return (
@@ -51,7 +52,7 @@ function Edit(props) {
           <option value="React">React</option>
           <option value="Node">Node</option>
           <option value="CSS">CSS</option>
-          <option value="JavaScripts">JavaScripts</option>
+          <option value="JavaScript">JavaScript</option>
           <option value="other">其他</option>
         </select>
       </div>

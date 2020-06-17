@@ -4,6 +4,7 @@ import { useMediaQuery } from 'react-responsive';
 import Edit from '../../../img/edit2'
 import Home from '../../../img/home'
 import Add from '../../../img/add'
+import Exit from '../../../img/exit'
 import "./index.scss";
 
 const items = [
@@ -41,6 +42,11 @@ function Sider({visible}) {
             </li>
           ))}
         </ul>
+      </div>
+      <div className="exit">
+        <Link to='/'>
+            <Exit />
+        </Link>
       </div>
     </div>
   );

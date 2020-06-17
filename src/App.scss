@@ -104,6 +104,16 @@ body.dark-mode {
               }
             }
           }
+          .pagination{
+            li{
+              background-color: #10171d;
+
+              a{
+                background-color: #10171d;
+                color: #fff;
+              }
+            }
+          }
           .tr {
             .recommend {
               border-color: rgba(91, 130, 200, 0.37);

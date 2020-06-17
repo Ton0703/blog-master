@@ -7,8 +7,15 @@
   background-color: lightcoral;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
   transform: translateX(-100%);
   transition: all .3s ease;
+
+  .exit{
+       transform: translateY(-80px);
+       cursor: pointer;
+  }
 
   @media screen and (max-width: 1000px) {
     width: 150px;

@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Sider from "../components/SiderBar";
 import Home from "../pages/Web/home";
 import Article from "../pages/Web/article";
+import BackTop from "../components/BackTop";
 
 function Web() {
   return (
@@ -16,6 +17,7 @@ function Web() {
           <Route path="/" component={Home} />
         </Switch>
       </div>
+      <BackTop />
     </div>
   );
 }

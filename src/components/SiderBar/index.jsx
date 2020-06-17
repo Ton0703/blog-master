@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./index.scss";
 import Catalog from "../Catalog";
 
-const list = ["React", "Node", "Javascripts", "CSS"];
+const list = ["React", "Node", "JavaScript", "CSS"];
 
 function Sider() {
   const [visible, set] = useState(false);

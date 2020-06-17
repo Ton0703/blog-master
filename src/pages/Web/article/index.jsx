@@ -17,11 +17,9 @@ function Article() {
   const history = useHistory();
   const id = location.pathname.substr(9);
   const data = fetchArticle({ id });
-  console.log(data);
   const content = data.content ? translateMarkdown(data.content) : null;
-  console.log(content);
   function Tag({ tag }) {
-    return <span onClick={() => history.push(`/tag/${tag}`)}>#{tag}</span>;
+    return <span onClick={() => history.push(`/?tag=${tag}`)}>#{tag}</span>;
   }
   return data.title ? (
     <div className="article">
@@ -45,8 +43,8 @@ function Article() {
         />
       </div>
       <div className="tag">
-        {data.tags.map((tag) => (
-          <Tag tag={tag} />
+        {data.tags.map((tag, index) => (
+          <Tag tag={tag} key={index}/>
         ))}
       </div>
     </div>

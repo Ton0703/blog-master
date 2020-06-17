@@ -53,7 +53,7 @@ function Home() {
   }, [current]);
   return (
     <div className="admin-home">
-      <ToastContainer autoClose={3000}/>
+      <ToastContainer autoClose={3000} position="bottom-right"/>
       <div className="articleList">
         <div className="menu-title">
           <ul>
@@ -72,7 +72,7 @@ function Home() {
             time={item.createdAt}
           />
         ))}
-        <Pagination onChange={handlePageChange} current={parseInt(current)} total={count} pageSize={15} style={{textAlign: 'center', marginTop: '10px'}}/>
+        <Pagination onChange={handlePageChange} current={parseInt(current)} total={count} pageSize={10} style={{textAlign: 'center', marginTop: '10px'}}/>
       </div>
       <div className={`model ${model ? "active" : ""}`}>
         <div className="model-title">确认删除？</div>
