@@ -6,7 +6,7 @@ class EditableTagGroup extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            tags: [...this.props.tag],
+            tags: [],
             inputVisible: false,
             inputValue: '',
             editInputIndex: -1,

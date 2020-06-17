@@ -1,10 +1,10 @@
 import React from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import fetchArticle from "../../../api/useFetchArticle";
-import translateMarkDown from "../../../utils/markdown";
+import { translateMarkdown } from "../../../utils";
 import Loading from "../../../components/Loading";
-import Time from '../../../img/time'
-import Topic from '../../../img/topic'
+import Time from "../../../img/time";
+import Topic from "../../../img/topic";
 import "./index.scss";
 
 const timeFormat = (time) => {
@@ -18,24 +18,22 @@ function Article() {
   const id = location.pathname.substr(9);
   const data = fetchArticle({ id });
   console.log(data);
-  const content = data.content ? translateMarkDown(data.content) : null;
-
+  const content = data.content ? translateMarkdown(data.content) : null;
+  console.log(content);
   function Tag({ tag }) {
     return <span onClick={() => history.push(`/tag/${tag}`)}>#{tag}</span>;
   }
   return data.title ? (
     <div className="article">
       <div className="title-container">
-        <div className="title">
-          {data.title}
-        </div>
+        <div className="title">{data.title}</div>
         <div className="other">
           <div className="topic">
             <Topic />
             {data.topic}
           </div>
           <div className="time">
-            <Time /> 
+            <Time />
             {timeFormat(data.updatedAt)}
           </div>
         </div>
@@ -54,7 +52,7 @@ function Article() {
     </div>
   ) : (
     <div className="loading">
-        <Loading />
+      <Loading />
     </div>
   );
 }
