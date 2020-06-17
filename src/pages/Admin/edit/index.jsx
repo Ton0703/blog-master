@@ -18,7 +18,7 @@ function Edit(props) {
       })
   }, [props.match.params.id])
   const handleClick = () => {
-    axios.patch("/article", { title, content, topic, tags }).then((res) => {
+    axios.patch(`/article/${props.match.params.id}`, { title, content, topic, tags }).then((res) => {
       console.log("修改成功");
     });
   };
