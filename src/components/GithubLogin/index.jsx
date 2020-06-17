@@ -1,14 +1,18 @@
 import React, {useEffect} from 'react'
-import axios from '../../utils/axios'
+import { useLocation, useHistory } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { login } from '../../redux/user/action'
+import { formatCountdown } from 'antd/lib/statistic/utils'
 
-const client_id = '81e10d8f1f7c68c59db2'
-const client_secret = 'c097872f4ff19e8626da1d779096d5db0fe18810'
+const client_id = 'f6e8a4769712dd6d48b9'
+const client_secret = '03e37128a252e35d76dd170da3571583f965187a'
 
 function GithubLogin() {
+    const location = useLocation()
+    const history = useHistory()
+    const dispatch = useDispatch()
     useEffect(() => {
-       axios.get(`/https://github.com/login/oauth/authorize?client_id=${client_id}`).then(res => {
-           console.log(res)
-       })
+       location.search.includes('?code=')? dispatch(login(location.search.replace('?code=', ''))) : history.push('/')
     } ,[])
     return (
         <div>

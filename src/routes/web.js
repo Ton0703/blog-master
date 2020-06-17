@@ -6,7 +6,7 @@ import Login from '../components/GithubLogin'
 function web() {
     return (
         <Switch>
-            <Route path='/login' component={Login} />
+            <Route path='/auth' component={Login} />
             <Route path='/' component={Web} />
         </Switch>
     )

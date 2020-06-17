@@ -44,6 +44,10 @@ function Header() {
     }
   };
 
+  const handleGithubLogin = () => {
+    history.push('https://github.com/login/oauth/authorize')
+  }
+
   const handlePress = (e) => {
     if (e.key === "Enter") {
       fetchData();
@@ -83,7 +87,11 @@ function Header() {
         <div className="link-menu">
           <ul>
             <li className="menu-item" onClick={handleAdminClick}>Admin</li>
-            <li className="menu-item">Login</li>
+            <li className="menu-item">
+              <a href="https://github.com/login/oauth/authorize?client_id=f6e8a4769712dd6d48b9">
+                 Login
+              </a>
+            </li>
             <li className="menu-item">Github</li>
           </ul>
         </div>
