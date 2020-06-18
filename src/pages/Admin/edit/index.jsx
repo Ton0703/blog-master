@@ -3,7 +3,7 @@ import "./index.scss";
 import MDEditor from "../../../utils/markdown";
 import axios from "../../../utils/axios";
 
-import Test from '../../../components/Admin/Tag/index.test'
+import Test from "../../../components/Admin/Tag/index.test";
 
 function Edit(props) {
   const [content, setContent] = useState("");
@@ -11,21 +11,23 @@ function Edit(props) {
   const [topic, setTopic] = useState("");
   const [tags, setTag] = useState([]);
   useEffect(() => {
-      axios.get(`/article/${props.match.params.id}`).then(({data}) => {
-          setContent(data.content)
-          setTopic(data.topic)
-          setTag([...data.tags])
-          setTitle(data.title)
-      })
-  }, [props.match.params.id])
-  const handleClick = () => {
-    axios.put(`/article/${props.match.params.id}`, { title, content, topic, tags }).then((res) => {
-      console.log("修改成功");
+    axios.get(`/article/${props.match.params.id}`).then(({ data }) => {
+      setContent(data.content);
+      setTopic(data.topic);
+      setTag([...data.tags]);
+      setTitle(data.title);
     });
+  }, [props.match.params.id]);
+  const handleClick = () => {
+    axios
+      .put(`/article/${props.match.params.id}`, { title, content, topic, tags })
+      .then((res) => {
+        console.log("修改成功");
+      });
   };
   const handleSelectChange = (e) => {
     setTopic(e);
-    console.log(e)
+    console.log(e);
   };
 
   return (

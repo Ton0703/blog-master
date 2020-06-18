@@ -10,19 +10,19 @@ function Catalog({ topic }) {
   const articleId = location.pathname.split("/")[2];
   const [list, setList] = useState([]);
   const [visible, setVisible] = useState(false);
-  const [Topic, setTopic] = useState('')
+
   useEffect(() => {
     axios.get(`/article/topic/${topic}`).then((res) => {
       setList(res.data);
     });
   }, [topic]);
-//  useEffect(() => {
-//     axios.get(`/${articleId}/topic`).then(res => {
-//       setTopic(res)
-//       console.log(res)
-//     })
-//  }, [articleId])
-  
+  //  useEffect(() => {
+  //     axios.get(`/${articleId}/topic`).then(res => {
+  //       setTopic(res)
+  //       console.log(res)
+  //     })
+  //  }, [articleId])
+
   const handleClick = () => {
     setVisible(!visible);
   };

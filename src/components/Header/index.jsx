@@ -1,20 +1,33 @@
-import React, { useState, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import DarkModeToggle from "../theme/DarkModeToggle";
-//import useOnClickOutside from "use-onclickoutside";
 import Logo from "../../img/logo";
 import SearchLogo from "../../img/search";
+import axios from "axios";
 import "./index.scss";
 
 function Header() {
   const ref = useRef(null);
+  const [user, setUser] = useState("");
+  const token = useSelector((state) => state.user.token);
+  const url =
+    token !== "" && `https://api.github.com/user?access_token=${token}`;
+  useEffect(() => {
+    url &&
+      axios
+        .get(url)
+        .then((res) => {
+          const { login } = res.data;
+          setUser(login);
+        })
+        .catch((error) => console.log(error));
+  }, [url]);
   const history = useHistory();
-  const location = useLocation()
+  const location = useLocation();
   const [visible, set] = useState(false);
   const [search, setSearch] = useState(false);
   const [key, setKey] = useState("");
-
-  //useOnClickOutside(ref, () => set(false));
 
   const handleClick = () => {
     set(!visible);
@@ -28,11 +41,19 @@ function Header() {
   };
 
   const fetchData = useCallback(() => {
-    const url = location.search ==='' ? `?key=${key}` : (location.search.includes('key') ? `${location.search.substr(0, location.search.indexOf('key'))}key=${key}` : `${location.search}&key=${key}`)
+    const url =
+      location.search === ""
+        ? `?key=${key}`
+        : location.search.includes("key")
+        ? `${location.search.substr(
+            0,
+            location.search.indexOf("key")
+          )}key=${key}`
+        : `${location.search}&key=${key}`;
     history.push(key !== "" && url);
     setKey("");
     setSearch(false);
-    set(false)
+    set(false);
   }, [key, history, location.search]);
 
   const handleButtonClick = (e) => {
@@ -44,10 +65,6 @@ function Header() {
     }
   };
 
-  const handleGithubLogin = () => {
-    history.push('https://github.com/login/oauth/authorize')
-  }
-
   const handlePress = (e) => {
     if (e.key === "Enter") {
       fetchData();
@@ -55,8 +72,8 @@ function Header() {
   };
 
   const handleAdminClick = () => {
-    history.push('/admin')
-  }
+    history.push("/admin");
+  };
 
   return (
     <div className="header">
@@ -86,18 +103,27 @@ function Header() {
         </div>
         <div className="link-menu">
           <ul>
-            <li className="menu-item" onClick={handleAdminClick}>Admin</li>
             <li className="menu-item">
-              <a href="https://github.com/login/oauth/authorize?client_id=f6e8a4769712dd6d48b9">
-                 Login
-              </a>
+              {user ? (
+                user
+              ) : (
+                <a href="https://github.com/login/oauth/authorize?client_id=f6e8a4769712dd6d48b9">
+                  Login
+                </a>
+              )}
+            </li>
+            <li className="menu-item" onClick={handleAdminClick}>
+              Admin
             </li>
             <li className="menu-item">Github</li>
           </ul>
         </div>
         <DarkModeToggle />
       </div>
-      <div className={`header-button ${visible ? "close" : ""}`} onClick={handleClick}>
+      <div
+        className={`header-button ${visible ? "close" : ""}`}
+        onClick={handleClick}
+      >
         <div className="line line1"></div>
         <div className="line line2"></div>
         <div className="line line3"></div>

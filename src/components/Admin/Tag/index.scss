@@ -5,7 +5,7 @@
   .tags {
     display: flex;
     flex-wrap: wrap;
-   
+
     .tag-item {
       border: 1px solid #e7e7e7;
       border-radius: 5px;
@@ -13,16 +13,16 @@
       margin-right: 10px;
       display: flex;
       align-items: center;
-      
+
       @media screen and(max-width: 500px) {
         margin-bottom: 5px;
       }
 
-      div{
-          display: flex;
-        svg{
-            width: 16px;
-            height: 16px;
+      div {
+        display: flex;
+        svg {
+          width: 16px;
+          height: 16px;
         }
       }
     }
@@ -36,8 +36,8 @@
       border: 1px solid #e7e7e7;
       border-radius: 5px;
       padding-left: 5px;
-      &:focus{
-          border-color: gray;
+      &:focus {
+        border-color: gray;
       }
     }
   }

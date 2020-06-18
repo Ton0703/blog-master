@@ -18,7 +18,12 @@ function Home() {
 
   const { articleList, loading, count } = useFetchData({ ...query });
   const handlePageChange = (p) => {
-    const url = location.search === ''? `/?page=${p}` : (location.search.indexOf('page') === -1 ? `${location.search}&page=${p}`: location.search.replace(/page=[1-9]*$/, `page=${p}`))
+    const url =
+      location.search === ""
+        ? `/?page=${p}`
+        : location.search.indexOf("page") === -1
+        ? `${location.search}&page=${p}`
+        : location.search.replace(/page=[1-9]*$/, `page=${p}`);
     history.push(url.replace("//", "/"));
   };
   return (

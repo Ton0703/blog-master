@@ -1,23 +1,23 @@
-import React from 'react'
-import { Tag, Input, Tooltip } from 'antd';
-import { PlusOutlined } from '@ant-design/icons';
+import React from "react";
+import { Tag, Input, Tooltip } from "antd";
+import { PlusOutlined } from "@ant-design/icons";
 
 class EditableTagGroup extends React.Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            tags: [],
-            inputVisible: false,
-            inputValue: '',
-            editInputIndex: -1,
-            editInputValue: '',
-          };
-    }
-  
-  handleClose = removedTag => {
-    const tags = this.state.tags.filter(tag => tag !== removedTag);
+  constructor(props) {
+    super(props);
+    this.state = {
+      tags: [],
+      inputVisible: false,
+      inputValue: "",
+      editInputIndex: -1,
+      editInputValue: "",
+    };
+  }
+
+  handleClose = (removedTag) => {
+    const tags = this.state.tags.filter((tag) => tag !== removedTag);
     console.log(tags);
-    this.props.setTag(tags)
+    this.props.setTag(tags);
     this.setState({ tags });
   };
 
@@ -25,7 +25,7 @@ class EditableTagGroup extends React.Component {
     this.setState({ inputVisible: true }, () => this.input.focus());
   };
 
-  handleInputChange = e => {
+  handleInputChange = (e) => {
     this.setState({ inputValue: e.target.value });
   };
 
@@ -36,15 +36,15 @@ class EditableTagGroup extends React.Component {
       tags = [...tags, inputValue];
     }
     console.log(tags);
-    this.props.setTag(tags)
+    this.props.setTag(tags);
     this.setState({
       tags,
       inputVisible: false,
-      inputValue: '',
+      inputValue: "",
     });
   };
 
-  handleEditInputChange = e => {
+  handleEditInputChange = (e) => {
     this.setState({ editInputValue: e.target.value });
   };
 
@@ -56,19 +56,25 @@ class EditableTagGroup extends React.Component {
       return {
         tags: newTags,
         editInputIndex: -1,
-        editInputValue: '',
+        editInputValue: "",
       };
     });
   };
 
-  saveInputRef = input => (this.input = input);
+  saveInputRef = (input) => (this.input = input);
 
-  saveEditInputRef = input => (this.editInput = input);
+  saveEditInputRef = (input) => (this.editInput = input);
 
   render() {
-    const { tags, inputVisible, inputValue, editInputIndex, editInputValue } = this.state;
+    const {
+      tags,
+      inputVisible,
+      inputValue,
+      editInputIndex,
+      editInputValue,
+    } = this.state;
     return (
-      <div className='1'>
+      <div className="1">
         {tags.map((tag, index) => {
           if (editInputIndex === index) {
             return (
@@ -95,11 +101,14 @@ class EditableTagGroup extends React.Component {
               onClose={() => this.handleClose(tag)}
             >
               <span
-                onDoubleClick={e => {
+                onDoubleClick={(e) => {
                   if (index !== 0) {
-                    this.setState({ editInputIndex: index, editInputValue: tag }, () => {
-                      this.editInput.focus();
-                    });
+                    this.setState(
+                      { editInputIndex: index, editInputValue: tag },
+                      () => {
+                        this.editInput.focus();
+                      }
+                    );
                     e.preventDefault();
                   }
                 }}
@@ -119,7 +128,7 @@ class EditableTagGroup extends React.Component {
         {inputVisible && (
           <Input
             ref={this.saveInputRef}
-            style={{width: '76px'}}
+            style={{ width: "76px" }}
             type="text"
             size="small"
             className="tag-input"
@@ -139,4 +148,4 @@ class EditableTagGroup extends React.Component {
   }
 }
 
-export default EditableTagGroup
+export default EditableTagGroup;

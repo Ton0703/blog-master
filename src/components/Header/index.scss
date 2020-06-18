@@ -144,6 +144,19 @@
                     padding: 15px;
                     cursor: pointer;
                     font-family: 'Poppins', sans-serif;
+
+                    .github{
+                        position: relative;
+
+                        .logut{
+                            position: absolute;
+                            left: 0;
+                            bottom:  -100%;
+                            width: 100%;
+                            height: 100%;
+                            border: 1px solid #e7e7e7;
+                        }
+                    }
                 }
             }
 

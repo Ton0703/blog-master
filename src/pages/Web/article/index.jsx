@@ -44,7 +44,7 @@ function Article() {
       </div>
       <div className="tag">
         {data.tags.map((tag, index) => (
-          <Tag tag={tag} key={index}/>
+          <Tag tag={tag} key={index} />
         ))}
       </div>
     </div>

@@ -10,11 +10,11 @@
   align-items: center;
   justify-content: space-between;
   transform: translateX(-100%);
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 
-  .exit{
-       transform: translateY(-80px);
-       cursor: pointer;
+  .exit {
+    transform: translateY(-80px);
+    cursor: pointer;
   }
 
   @media screen and (max-width: 1000px) {
@@ -57,6 +57,6 @@
   }
 }
 
-.visible{
+.visible {
   transform: translateX(0);
 }

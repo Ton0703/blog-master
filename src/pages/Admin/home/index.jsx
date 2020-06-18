@@ -3,21 +3,22 @@ import axios from "../../../utils/axios";
 import "./index.scss";
 import Item from "../../../components/Admin/Item";
 import { ToastContainer, toast } from "react-toastify";
-import { Pagination } from 'antd'
-import { useLocation, useHistory } from 'react-router-dom'
+import { Pagination } from "antd";
+import { useLocation, useHistory } from "react-router-dom";
 import "react-toastify/dist/ReactToastify.css";
 
 function Home() {
   const [list, set] = useState([]);
   const [model, setModel] = useState(false);
   const [id, setId] = useState("");
-  const [count, setCount] = useState(1)
+  const [count, setCount] = useState(1);
 
-  const location = useLocation()
-  const history = useHistory()
+  const location = useLocation();
+  const history = useHistory();
 
-  const current = location.pathname.includes('/page') ? location.pathname.substr(12) : '1'
- 
+  const current = location.pathname.includes("/page")
+    ? location.pathname.substr(12)
+    : "1";
 
   const itemSwitch = () => {
     setModel(true);
@@ -29,7 +30,7 @@ function Home() {
       axios.delete(`/article/${id}`).then(() => {
         const newList = list.filter((item) => item._id !== id);
         set(newList);
-        notify()
+        notify();
       });
     },
     [list]
@@ -42,18 +43,18 @@ function Home() {
     setModel(false);
   };
   const handlePageChange = (e) => {
-    history.push(`/admin/page=${e}`)
-  }
-  
+    history.push(`/admin/page=${e}`);
+  };
+
   useEffect(() => {
     axios.get(`/article/admin?page=${current}`).then((res) => {
       set(res.data.data);
-      setCount(res.data.count)
-    }); 
+      setCount(res.data.count);
+    });
   }, [current]);
   return (
     <div className="admin-home">
-      <ToastContainer autoClose={3000} position="bottom-right"/>
+      <ToastContainer autoClose={3000} position="bottom-right" />
       <div className="articleList">
         <div className="menu-title">
           <ul>
@@ -72,7 +73,13 @@ function Home() {
             time={item.createdAt}
           />
         ))}
-        <Pagination onChange={handlePageChange} current={parseInt(current)} total={count} pageSize={10} style={{textAlign: 'center', marginTop: '10px'}}/>
+        <Pagination
+          onChange={handlePageChange}
+          current={parseInt(current)}
+          total={count}
+          pageSize={10}
+          style={{ textAlign: "center", marginTop: "10px" }}
+        />
       </div>
       <div className={`model ${model ? "active" : ""}`}>
         <div className="model-title">确认删除？</div>

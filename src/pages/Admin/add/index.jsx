@@ -14,7 +14,7 @@ function Add() {
   const notify = () => toast.info("发布成功 !");
   const handleClick = () => {
     axios.post("/article", { title, content, topic, tags }).then((res) => {
-      notify()
+      notify();
     });
   };
 
@@ -24,7 +24,7 @@ function Add() {
 
   return (
     <div className="admin-add">
-       <ToastContainer autoClose={3000}/>
+      <ToastContainer autoClose={3000} />
       <div className="title">
         <label>标题: </label>
         <input

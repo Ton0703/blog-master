@@ -12,8 +12,8 @@ function Sider() {
   };
 
   const handleClose = () => {
-      set(false)
-  }
+    set(false);
+  };
 
   return (
     <div>
@@ -22,7 +22,10 @@ function Sider() {
           <Catalog topic={item} key={index} />
         ))}
       </div>
-      <div className={`sider-bg ${visible? 'show': ''}`} onClick={handleClose}></div>
+      <div
+        className={`sider-bg ${visible ? "show" : ""}`}
+        onClick={handleClose}
+      ></div>
       <button className="sider-btn" onClick={handleClick}>
         <div className="line" onClick={handleClick}></div>
       </button>

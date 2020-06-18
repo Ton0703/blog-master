@@ -1,89 +1,89 @@
-.sider{
-    width: 300px;
-    height: calc(100vh - 60px);
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    border-right: 1px solid #e7e7e7;
-    padding-top: 25px;
-    padding-left: 20px;
-    transition: transform .3s ease;
-    z-index: 2;
-    background-color: #fff;
+.sider {
+  width: 300px;
+  height: calc(100vh - 60px);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  border-right: 1px solid #e7e7e7;
+  padding-top: 25px;
+  padding-left: 20px;
+  transition: transform 0.3s ease;
+  z-index: 2;
+  background-color: #fff;
 
-    @media screen and (max-width: 1000px) {
-        width: 200px;
-    }
-    @media screen and (max-width: 700px){
-       width: 150px;
-    }
-    @media screen and (max-width: 590px){
-        transform: translateX(-100%);
-    }
+  @media screen and (max-width: 1000px) {
+    width: 200px;
+  }
+  @media screen and (max-width: 700px) {
+    width: 150px;
+  }
+  @media screen and (max-width: 590px) {
+    transform: translateX(-100%);
+  }
 }
-.sider-bg{
-    position: fixed;
-    width: 100vw;
-    height: 100vh;
-    left: 0;
-    top: 0; 
-    visibility: hidden;
-    z-index: 1;
+.sider-bg {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  visibility: hidden;
+  z-index: 1;
 }
-.show{
-    visibility: visible;
+.show {
+  visibility: visible;
 }
 .sider-btn {
-    position: fixed;
-    right: 5px;
-    bottom: 90px;
-    display: none;
-    width: 40px;
-    height: 40px;
-    background-color: rgba(255, 255, 255, .7);
-    border: 1px solid #00B0FF;
-    border-radius: 10px;
-    opacity: 0.7;
-    cursor: pointer;
-    user-select: none;
-    outline: none;
-    z-index: 1;
+  position: fixed;
+  right: 5px;
+  bottom: 90px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  background-color: rgba(255, 255, 255, 0.7);
+  border: 1px solid #00b0ff;
+  border-radius: 10px;
+  opacity: 0.7;
+  cursor: pointer;
+  user-select: none;
+  outline: none;
+  z-index: 1;
 
-    .line {
-      width: 70%;
+  .line {
+    width: 70%;
+    height: 4px;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: relative;
+    &::before {
+      content: "";
+      width: 100%;
       height: 4px;
-      background-color: rgba(0, 0, 0, .7);
-      position: relative;
-      &::before{
-          content: '';
-          width: 100%;
-          height: 4px;
-          display: block;
-          position: absolute;
-          left: 0;
-          top: -10px;
-          background-color: rgba(0, 0, 0, .7);
-          }
-          &::after{
-            content: '';
-            width: 100%;
-            height: 4px;
-            display: block;
-            position: absolute;
-            left: 0;
-            bottom: -10px;
-            background-color: rgba(0, 0, 0, .7);
-            }
+      display: block;
+      position: absolute;
+      left: 0;
+      top: -10px;
+      background-color: rgba(0, 0, 0, 0.7);
     }
-    @media screen and (max-width: 590px) {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    &::after {
+      content: "";
+      width: 100%;
+      height: 4px;
+      display: block;
+      position: absolute;
+      left: 0;
+      bottom: -10px;
+      background-color: rgba(0, 0, 0, 0.7);
     }
   }
+  @media screen and (max-width: 590px) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 
-.active{
-    @media screen and (max-width: 590px){
-        transform: translateX(0);
-    }
+.active {
+  @media screen and (max-width: 590px) {
+    transform: translateX(0);
+  }
 }
